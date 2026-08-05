@@ -1,0 +1,72 @@
+import { Icon } from "@lattice-php/ui/icons";
+import { useT } from "@lattice-php/ui/i18n";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@lattice-php/ui/dropdown-menu";
+
+export type RowAction = {
+  key: string;
+  label: string;
+  icon: string;
+  onClick: () => void;
+  danger?: boolean;
+};
+
+function inlineClass(danger?: boolean): string {
+  return danger
+    ? "text-lt-danger hover:text-lt-danger [&_svg]:size-lt-icon-sm"
+    : "text-lt-muted-fg hover:text-lt-fg [&_svg]:size-lt-icon-sm";
+}
+
+export function RowActions({ actions }: { actions: RowAction[] }) {
+  const { t } = useT("lattice");
+  if (actions.length === 0) {
+    return null;
+  }
+
+  if (actions.length === 1) {
+    const action = actions[0];
+    return (
+      <button
+        type="button"
+        aria-label={action.label}
+        data-test={`row-action-${action.key}`}
+        className={inlineClass(action.danger)}
+        onClick={action.onClick}
+      >
+        <Icon name={action.icon} />
+      </button>
+    );
+  }
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button
+          type="button"
+          aria-label={t("common.action-group.label", "Actions")}
+          data-test="row-actions-menu"
+          className="text-lt-muted-fg hover:text-lt-fg [&_svg]:size-lt-icon-sm"
+        >
+          <Icon name="more-horizontal" />
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="min-w-[10rem]">
+        {actions.map((action) => (
+          <DropdownMenuItem
+            key={action.key}
+            data-test={`row-action-${action.key}`}
+            danger={action.danger}
+            icon={action.icon}
+            onClick={action.onClick}
+          >
+            {action.label}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
