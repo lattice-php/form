@@ -1,18 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace Lattice\Lattice\Forms;
+namespace Lattice\Form;
 
 use Illuminate\Support\ServiceProvider;
-use Lattice\Lattice\Attributes\AsForm;
-use Lattice\Lattice\Core\Discovery\DiscoveryKinds;
-use Lattice\Lattice\Facades\Lattice;
-use Lattice\Lattice\Forms\RichEditor\Attributes\AsEditorExtension;
-use Lattice\Lattice\Forms\RichEditor\EditorExtension;
-use Lattice\Lattice\Forms\RichEditor\EditorExtensionRegistry;
-use Lattice\Lattice\Ui\UiServiceProvider;
+use Lattice\Core\Attributes\AsForm;
+use Lattice\Core\Discovery\DiscoveryKinds;
+use Lattice\Core\Facades\Lattice;
+use Lattice\Form\RichEditor\Attributes\AsEditorExtension;
+use Lattice\Form\RichEditor\EditorExtension;
+use Lattice\Form\RichEditor\EditorExtensionRegistry;
+use Lattice\Ui\UiServiceProvider;
 
-final class FormsServiceProvider extends ServiceProvider
+final class FormServiceProvider extends ServiceProvider
 {
     #[\Override]
     public function register(): void
