@@ -15,8 +15,8 @@
       "@lattice-php/core/*": ["../core/resources/js/*"],
       "@lattice-php/form": ["./resources/js/index.ts"],
       "@lattice-php/form/*": ["./resources/js/*"],
-      "@lattice-php/lattice": ["../../resources/js/index.ts"],
-      "@lattice-php/lattice/*": ["../../resources/js/*"],
+      "@lattice-php/lattice": ["../framework/resources/js/index.ts"],
+      "@lattice-php/lattice/*": ["../framework/resources/js/*"],
       "@lattice-php/ui": ["../ui/resources/js/index.ts"],
       "@lattice-php/ui/*": ["../ui/resources/js/*"]
     }
